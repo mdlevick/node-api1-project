@@ -11,6 +11,19 @@ server.get("/", (req, res) => {
     res.send({ api: "Target Acquired"})
 });
 
+server.get("/api/users", (req, res) => {
+
+    db.find()
+    .then(users => {
+        res.status(200).json(users);
+    })
+    .catch(error => {
+        console.log("error on GET /users", error);
+        res
+            .status(500)
+            .json({errorMessage: "error gett;ing list of users from database"});
+    });
+});
 
 
 
